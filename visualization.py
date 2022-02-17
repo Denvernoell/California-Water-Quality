@@ -22,6 +22,7 @@ dots = base.mark_point(size=30, clip=True).encode(
     opacity=alt.condition(selection, alt.value(1), alt.value(0.2)),
     size=alt.condition(selection, alt.value(50), alt.value(5)),
     tooltip=my_headers
+    # tooltip=alt.condition(selection, my_headers, ['STATION_NAME'])
 ).add_selection(selection)
 # ).add_selection(selection).interactive()
 # dots
