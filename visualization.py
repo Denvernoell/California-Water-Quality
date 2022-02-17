@@ -11,14 +11,18 @@ base = alt.Chart(df).properties(width=1000, height=700)
 
 selection = alt.selection_multi(fields=['STATION_NAME'], bind='legend')
 
-dots = base.mark_point(size=30).encode(
+my_bounds = (5, 13)
+dots = base.mark_point(size=30, clip=True).encode(
     x=alt.X('Month', title='Month'),
-    y=alt.Y('FDR_RESULT', title='Dissolved Oxygen (mg/L)'),
+    y=alt.Y('FDR_RESULT', title='Dissolved Oxygen (mg/L)',
+            # axis=alt.Axis(ticks=True, tickCount=my_bounds[1] - my_bounds[0])
+            ),
     shape=alt.Shape('COUNTY_NAME', title='County'),
     color=alt.Color('STATION_NAME', title='Station Name'),
     opacity=alt.condition(selection, alt.value(1), alt.value(0.2)),
     size=alt.condition(selection, alt.value(50), alt.value(5)),
     tooltip=my_headers
-).add_selection(selection).interactive()
+).add_selection(selection)
+# ).add_selection(selection).interactive()
 # dots
 st.write(dots)
