@@ -7,7 +7,7 @@ df = pd.read_parquet('DO_data.parquet')
 my_headers = ['STATION_NAME', 'PARAMETER', 'FDR_RESULT', 'UNS_NAME',
               'SAMPLE_DATE', 'SAMPLE_DEPTH', 'SAMPLE_DEPTH_UNITS', 'Month', 'COUNTY_NAME']
 
-base = alt.Chart(df).properties(width=1000, height=500)
+base = alt.Chart(df).properties(width=1000, height=700)
 
 selection = alt.selection_multi(fields=['STATION_NAME'], bind='legend')
 
