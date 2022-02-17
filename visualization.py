@@ -26,4 +26,5 @@ dots = base.mark_point(size=30, clip=True).encode(
 ).add_selection(selection)
 # ).add_selection(selection).interactive()
 # dots
-st.write(dots)
+# st.write(dots)
+st.altair_chart(dots, use_container_width=True)
